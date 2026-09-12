@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-11 14:54:52",
-  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "date": "2026-09-13 03:03:23",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
   "documents": [
     {
       "file": "english_resume.pdf",
@@ -8,25 +8,25 @@
       "desc": "Clean English resume (text-layer PDF)",
       "engines": {
         "pypdf": {
-          "time_s": 0.0035,
+          "time_s": 0.0041,
           "chars": 1072,
           "recall": 1.0,
           "error": null,
           "preview": "JOHN DOE\nSenior Software Engineer\nEmail: john.doe@example.com | Phone: +1-555-0199\nLinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe\nPROFESSIONAL SUMMARY\nExperienced software engineer with 8+ years building scalable web applications.\nExpert in Python, FastAPI, React, and cloud-native architectures.\nPassionate about machine learning and data engineering.\nTECHNICAL SKILLS\nLanguages: Python, TypeScript, Go, SQL\nFrameworks: FastAPI, Django, React, Next.js\nTools: Docker, Kubernetes, Post"
         },
         "PaddleOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "NOT INSTALLED (needs paddlepaddle, Python ≤3.12)",
-          "preview": ""
+          "time_s": 3.8865,
+          "chars": 1074,
+          "recall": 1.0,
+          "error": null,
+          "preview": "JOHN DOE\nSenior Software Engineer.\nEmail: john.doe@example.com | Phone: +1-555-0199\nLinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe\nPROFESSIONAL SUMMARY\nExperienced software engineer with 8+ years building scalable web applications.\nExpert in Python, FastAPI, React, and cloud-native architectures.\nPassionate about machine learning and data engineering.\nTECHNICAL SKILLS\nLanguages: Python, TypeScript, Go, SQL\nFrameworks: FastAPl, Django, React, Next.js\nTools: Docker, Kubernetes, Pos"
         },
         "TyphoonOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "Ollama not running. Start: ollama serve && ollama pull scb10x/typhoon-ocr-3b",
-          "preview": ""
+          "time_s": 7.793,
+          "chars": 1077,
+          "recall": 1.0,
+          "error": null,
+          "preview": "JOHN DOE\nSenior Software Engineer\nEmail: john.doe@example.com | Phone: +1-555-0199\nLinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe\n\nPROFESSIONAL SUMMARY\nExperienced software engineer with 8+ years building scalable web applications. Expert in Python, FastAPI, React, and cloud-native architectures. Passionate about machine learning and data engineering.\n\nTECHNICAL SKILLS\nLanguages: Python, TypeScript, Go, SQL\nFrameworks: FastAPI, Django, React, Next.js\nTools: Docker, Kubernetes, Po"
         }
       }
     },
@@ -36,25 +36,25 @@
       "desc": "Thai resume (font: tahoma)",
       "engines": {
         "pypdf": {
-          "time_s": 0.0059,
+          "time_s": 0.006,
           "chars": 660,
           "recall": 1.0,
           "error": null,
           "preview": "สมชาย รักเรียน\nวิศวกรซอฟต์แวร์อาวุโส\nEmail: somchai@example.com | Tel: 081-234-5678\nทักษะ (Skills)\nPython, FastAPI, Go, Docker, Kubernetes, PostgreSQL\nMachine Learning, PyTorch, TensorFlow\nThai NLP, Elasticsearch\nประสบการณ์ทำงาน (Experience)\nวิศวกรซอฟต์แวร์อาวุโส - SCB 10X\nมกราคม 2564 - ปัจจุบัน (Jan 2021 - Present)\n- พัฒนาระบบ AI สำหรับวิเคราะห์เอกสาร\n- ออกแบบ Microservices ด้วย Python และ FastAPI\nวิศวกรซอฟต์แวร์ - Grab Thailand\nมิถุนายน 2561 - ธันวาคม 2563 (Jun 2018 - Dec 2020)\n- พัฒนา Backend"
         },
         "PaddleOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "NOT INSTALLED (needs paddlepaddle, Python ≤3.12)",
-          "preview": ""
+          "time_s": 2.2456,
+          "chars": 573,
+          "recall": 0.7333,
+          "error": null,
+          "preview": "JAnsnawausanl\nEmail: somchai@example.com | Tel: 081-234-5678\nWn (Skills)\nPython, FastAPI, Go, Docker, Kubernetes, PostgreSQL\nMachine Learning, PyTorch, TensorFlow.\nThai NLP, Elasticsearch\nsaunnsaivingnu (Experience)\njnsawausanl - SCB 10X\nun5nau 2564 - aanu (Jan 2021 - Present)\n- Waunsu AI ausuasnutanns\n- aanuuu Microservices au Python uas FastAPI\n?nsnawaus - Grab Thailand\naunuu 2561 - u3nAu 2563 (Jun 2018 - Dec 2020)\n- waun Backend API a3u Go uas gRPC\nansan (Education)\n1sayanin anunnsaauwnas - a"
         },
         "TyphoonOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "Ollama not running. Start: ollama serve && ollama pull scb10x/typhoon-ocr-3b",
-          "preview": ""
+          "time_s": 6.7866,
+          "chars": 664,
+          "recall": 1.0,
+          "error": null,
+          "preview": "สมชาย รักเรียน\nวิศวกรซอฟต์แวร์อาวุโส\nEmail: somchai@example.com | Tel: 081-234-5678\n\nทักษะ (Skills)\nPython, FastAPI, Go, Docker, Kubernetes, PostgreSQL\nMachine Learning, PyTorch, TensorFlow\nThai NLP, Elasticsearch\n\nประสบการณ์ทำงาน (Experience)\nวิศวกรซอฟต์แวร์อาวุโส - SCB 10X\nมกราคม 2564 - ปัจจุบัน (Jan 2021 - Present)\n- พัฒนาระบบ AI สำหรับวิเคราะห์เอกสาร\n- ออกแบบ Microservices ด้วย Python และ FastAPI\n\nวิศวกรซอฟต์แวร์ - Grab Thailand\nมิถุนายน 2561 - ธันวาคม 2563 (Jun 2018 - Dec 2020)\n- พัฒนา Back"
         }
       }
     },
@@ -71,18 +71,46 @@
           "preview": "Somchai Rukrean (สมชาย รักเรียน)\nSenior Data Engineer\nEmail: somchai.r@techcorp.co.th | Phone: +66-81-234-5678\nLocation: Bangkok, Thailand\nSKILLS\nPython, Apache Spark, Apache Kafka, Airflow, dbt\nAWS (S3, Redshift, Glue), Docker, Kubernetes\nThai NLP, Hugging Face Transformers\nEXPERIENCE\nSenior Data Engineer - TechCorp Thailand\nJan 2022 - Present\n- Designed real-time data pipeline processing 50M events/day\n- Built ML feature store for recommendation models\nData Engineer - KBTG (Kasikorn Business T"
         },
         "PaddleOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "NOT INSTALLED (needs paddlepaddle, Python ≤3.12)",
-          "preview": ""
+          "time_s": 2.3241,
+          "chars": 684,
+          "recall": 1.0,
+          "error": null,
+          "preview": "Somchai Rukrean (ugn Sntsau)\nSenior Data Engineer\nEmail: somchai.r@techcorp.co.th | Phone: +66-81-234-5678\nLocation: Bangkok, Thailand\nSKILLSE\nPython, Apache Spark, Apache Kafka, Airflow, dbt\nAws (S3, Redshift, Glue), Docker, Kubernetes\nThai NLP, Hugging Face Transformers\nEXPERIENCE\nSenior Data Engineer - TechCorp Thailand\nJan 2022 - Present\n- Designed real-time data pipeline processing 50M events/day\n- Built ML feature store for recommendation models\nData Engineer - KBTG (Kasikorn Business Tech"
         },
         "TyphoonOCR": {
+          "time_s": 6.3052,
+          "chars": 691,
+          "recall": 1.0,
+          "error": null,
+          "preview": "Somchai Rukrean (สมชาย รักเรียน)\nSenior Data Engineer\nEmail: somchai.r@techcorp.co.th | Phone: +66-81-234-5678\nLocation: Bangkok, Thailand\n\nSKILLS\nPython, Apache Spark, Apache Kafka, Airflow, dbt\nAWS (S3, Redshift, Glue), Docker, Kubernetes\nThai NLP, Hugging Face Transformers\n\nEXPERIENCE\nSenior Data Engineer - TechCorp Thailand\nJan 2022 - Present\n- Designed real-time data pipeline processing 50M events/day\n- Built ML feature store for recommendation models\n\nData Engineer - KBTG (Kasikorn Busines"
+        }
+      }
+    },
+    {
+      "file": "scanned_resume.png",
+      "lang": "english",
+      "desc": "Scanned image resume (PNG)",
+      "engines": {
+        "pypdf": {
           "time_s": 0,
           "chars": 0,
           "recall": 0.0,
-          "error": "Ollama not running. Start: ollama serve && ollama pull scb10x/typhoon-ocr-3b",
+          "error": "pypdf only handles PDF files",
           "preview": ""
+        },
+        "PaddleOCR": {
+          "time_s": 1.1824,
+          "chars": 77,
+          "recall": 0.8,
+          "error": null,
+          "preview": "SCANNED RESUME: Jane Doe\nEmail: jane @example.com\nSkills: Python, AWs, Docker"
+        },
+        "TyphoonOCR": {
+          "time_s": 4.3795,
+          "chars": 75,
+          "recall": 1.0,
+          "error": null,
+          "preview": "SCANNED RESUME\nJane Doe\nEmail: jane@example.com\nSkills: Python, AWS, Docker"
         }
       }
     },
@@ -92,25 +120,25 @@
       "desc": "Real English functional resume (Colorado State)",
       "engines": {
         "pypdf": {
-          "time_s": 0.0069,
+          "time_s": 0.0079,
           "chars": 1476,
           "recall": 1.0,
           "error": null,
           "preview": "Functional Resume Sample \n \nJohn W. Smith  \n2002 Front Range Way Fort Collins, CO 80525  \njwsmith@colostate.edu \n \nCareer Summary \n \nFour years experience in early childhood development with a diverse background in the care of \nspecial needs children and adults.  \n  \nAdult Care Experience \n \n• Determined work placement for 150 special needs adult clients.  \n• Maintained client databases and records.  \n• Coordinated client contact with local health care professionals on a monthly basis.     \n• Ma"
         },
         "PaddleOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "NOT INSTALLED (needs paddlepaddle, Python ≤3.12)",
-          "preview": ""
+          "time_s": 4.28,
+          "chars": 1367,
+          "recall": 1.0,
+          "error": null,
+          "preview": "Functional Resume Sample\nJohn W. Smith.\n2002 Front Range Way Fort Collins, CO 80525.\njwsmith@colostate.edu\nCareer Summary\nFour years experience in early childhood development with a diverse background in the care of\nspecial needs children and adults.\nAdult Care Experience\nDetermined work placement for 150 special needs adult clients\n Maintained client databases and records\nCoordinated client contact with local health care professionals on a monthly basis.\nManaged 25 volunteer workers..\nChildcare"
         },
         "TyphoonOCR": {
-          "time_s": 0,
-          "chars": 0,
-          "recall": 0.0,
-          "error": "Ollama not running. Start: ollama serve && ollama pull scb10x/typhoon-ocr-3b",
-          "preview": ""
+          "time_s": 8.2377,
+          "chars": 1494,
+          "recall": 1.0,
+          "error": null,
+          "preview": "# Functional Resume Sample\n\n## Contact Information\nJohn W. Smith\n2002 Front Range Way Fort Collins, CO 80525\njwsmith@colostate.edu\n\n## Career Summary\nFour years experience in early childhood development with a diverse background in the care of special needs children and adults.\n\n### Adult Care Experience\n- Determined work placement for 150 special needs adult clients.\n- Maintained client databases and records.\n- Coordinated client contact with local health care professionals on a monthly basis.\n"
         }
       }
     }

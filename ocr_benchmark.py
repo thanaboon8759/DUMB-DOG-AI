@@ -295,18 +295,37 @@ def run_pypdf_extraction(file_path: Path) -> OCRResult:
         return OCRResult("pypdf", file_path.name, "", time.perf_counter() - start, 0, str(e))
 
 
+def _render_pdf_page_to_image(file_path: Path) -> Path:
+    """Render the first page of a PDF to an image for OCR engines."""
+    import pypdfium2 as pdfium
+    doc = pdfium.PdfDocument(str(file_path))
+    page = doc[0]
+    img = page.render(scale=2).to_pil()
+    tmp_img = file_path.with_suffix(".tmp_rendered.png")
+    img.save(str(tmp_img))
+    return tmp_img
+
+
 def run_paddleocr(file_path: Path) -> OCRResult:
-    """Run PaddleOCR (requires paddlepaddle)."""
+    """Run PaddleOCR on PDF or image file."""
     try:
         from paddleocr import PaddleOCR
     except ImportError:
         return OCRResult("PaddleOCR", file_path.name, "", 0, 0,
-                         "NOT INSTALLED (needs paddlepaddle, Python ≤3.12)")
+                         "NOT INSTALLED — run under Python 3.12 with paddlepaddle & paddleocr")
 
     start = time.perf_counter()
+    tmp_img = None
     try:
-        ocr = PaddleOCR(use_angle_cls=True, lang="th", show_log=False, use_gpu=False)
-        result = ocr.ocr(str(file_path), cls=True)
+        if file_path.suffix.lower() == ".pdf":
+            target_path = _render_pdf_page_to_image(file_path)
+            tmp_img = target_path
+        else:
+            target_path = file_path
+
+        ocr = PaddleOCR(use_angle_cls=True, lang="en", show_log=False)
+        result = ocr.ocr(str(target_path), cls=True)
+        
         lines = []
         if result and result[0]:
             for info in result[0]:
@@ -318,6 +337,12 @@ def run_paddleocr(file_path: Path) -> OCRResult:
         return OCRResult("PaddleOCR", file_path.name, text, elapsed, len(text))
     except Exception as e:
         return OCRResult("PaddleOCR", file_path.name, "", time.perf_counter() - start, 0, str(e))
+    finally:
+        if tmp_img and tmp_img.exists():
+            try:
+                tmp_img.unlink()
+            except Exception:
+                pass
 
 
 def run_typhoon_ocr(file_path: Path) -> OCRResult:
@@ -328,7 +353,7 @@ def run_typhoon_ocr(file_path: Path) -> OCRResult:
         return OCRResult("TyphoonOCR", file_path.name, "", 0, 0,
                          "NOT INSTALLED — pip install typhoon-ocr")
 
-    # Check Ollama
+    # Check Ollama connectivity
     try:
         urllib.request.urlopen(OLLAMA_BASE_URL.replace("/v1", ""), timeout=3)
     except Exception:
@@ -336,12 +361,31 @@ def run_typhoon_ocr(file_path: Path) -> OCRResult:
                          "Ollama not running. Start: ollama serve && ollama pull scb10x/typhoon-ocr-3b")
 
     start = time.perf_counter()
+    tmp_img = None
     try:
-        md = ocr_document(str(file_path), base_url=OLLAMA_BASE_URL, api_key="ollama", model=TYPHOON_MODEL)
+        if file_path.suffix.lower() == ".pdf":
+            target_path = _render_pdf_page_to_image(file_path)
+            tmp_img = target_path
+        else:
+            target_path = file_path
+
+        md = ocr_document(
+            str(target_path),
+            base_url=OLLAMA_BASE_URL,
+            api_key="ollama",
+            model=TYPHOON_MODEL,
+            task_type="default"
+        )
         elapsed = time.perf_counter() - start
         return OCRResult("TyphoonOCR", file_path.name, md, elapsed, len(md))
     except Exception as e:
         return OCRResult("TyphoonOCR", file_path.name, "", time.perf_counter() - start, 0, str(e))
+    finally:
+        if tmp_img and tmp_img.exists():
+            try:
+                tmp_img.unlink()
+            except Exception:
+                pass
 
 
 # ── Metrics ─────────────────────────────────────────────────────────────
@@ -541,6 +585,12 @@ def main():
     bi = BENCHMARK_DIR / "bilingual_resume.pdf"
     cases.append(create_bilingual_resume(bi))
     print(f"  ✅ {bi.name}")
+
+    # Scanned image sample
+    scan = BENCHMARK_DIR / "scanned_resume.png"
+    if scan.exists():
+        cases.append(BenchmarkCase(scan, "Scanned image resume (PNG)", "english", ["Jane Doe", "jane@example.com", "Python", "AWS", "Docker"]))
+        print(f"  ✅ {scan.name}")
 
     # Download real samples
     print("\n📥 Step 2: Real-world samples...")
