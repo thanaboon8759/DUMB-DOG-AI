@@ -125,7 +125,27 @@ class CandidateProfile(BaseModel):
     )
     skills: list[str] = Field(
         default_factory=list,
-        description="Technical and soft skills extracted from the resume",
+        description="Explicit technical and soft skills listed in the resume",
+    )
+    implicit_skills: list[str] = Field(
+        default_factory=list,
+        description="Inferred skills deduced from job achievements and duties",
+    )
+    seniority_level: Optional[str] = Field(
+        default=None,
+        description="Estimated seniority: Junior, Mid-Level, Senior, Lead/Principal, Executive",
+    )
+    total_years_experience: Optional[float] = Field(
+        default=None,
+        description="Estimated total professional experience in years",
+    )
+    executive_summary: Optional[str] = Field(
+        default=None,
+        description="Concise 2-3 sentence executive summary of the candidate profile",
+    )
+    extraction_confidence: Optional[float] = Field(
+        default=1.0,
+        description="Extraction confidence score between 0.0 and 1.0",
     )
     experience: list[WorkExperience] = Field(
         default_factory=list,

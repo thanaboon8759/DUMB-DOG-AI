@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-09-15 22:26:44",
+  "hardware": "NVIDIA GeForce RTX 4080 (16 GB VRAM)",
+  "vector_fastpath_avg_ms": 4.4425,
+  "ocr_benchmarks": [
+    {
+      "model": "Baseline (scb10x/typhoon-ocr-3b)",
+      "avg_latency_s": 7.73,
+      "cer_percent": 16.27,
+      "wer_percent": 22.21,
+      "skill_f1": 0.95
+    },
+    {
+      "model": "Fine-Tuned + Autocrop (typhoon-ocr-finetuned)",
+      "avg_latency_s": 7.64,
+      "cer_percent": 16.06,
+      "wer_percent": 19.93,
+      "skill_f1": 0.95
+    }
+  ],
+  "acceptance_criteria": {
+    "vector_latency_lt_10ms": true,
+    "thai_cer_lt_1_5_percent": false,
+    "skill_f1_gt_0_95": true
+  }
+}

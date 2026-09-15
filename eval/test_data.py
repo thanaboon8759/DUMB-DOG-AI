@@ -215,5 +215,99 @@ Machine Learning Engineer passionate about NLP and Computer Vision. สนใจ
                 }
             ]
         }
+    },
+    {
+        "id": "en_02_lead",
+        "markdown": """# David Miller
+**Email:** david.miller@cloudarch.io
+**Phone:** +1-415-555-0899
+**Location:** San Francisco, CA
+
+## Executive Summary
+Principal Cloud Architect with 10+ years driving digital transformation across Fortune 500 enterprises. Expert in Kubernetes cluster governance, multi-cloud architecture, and leading cross-functional engineering teams.
+
+## Technical Skills
+- Cloud & Infrastructure: AWS, Azure, GCP, Terraform, Kubernetes, Helm, Docker
+- Observability: Prometheus, Grafana, Datadog
+- Languages & Frameworks: Go, Python, Bash
+- Methodologies: GitOps, DevSecOps, SRE, Agile Leadership
+
+## Professional Experience
+
+### Principal Cloud Architect — CloudScale Systems
+*March 2020 – Present*
+- Spearheaded enterprise migration of 120+ microservices to multi-region AWS EKS clusters, reducing downtime to 99.99%.
+- Formulated FinOps cost-governance strategy yielding $1.4M in annual cloud infrastructure savings.
+- Mentored a global team of 14 DevOps and Platform engineers.
+
+### Lead DevOps Engineer — FinTech Horizons
+*January 2016 – February 2020*
+- Architected zero-trust CI/CD deployment pipeline handling 500+ production releases per month.
+- Implemented automated compliance auditing for PCI-DSS using Terraform and Open Policy Agent.
+
+## Education
+### M.S. in Software Engineering — Carnegie Mellon University (2015)
+### B.S. in Computer Science — University of California, Berkeley (2013)
+""",
+        "ground_truth": {
+            "full_name": "David Miller",
+            "contact_email": "david.miller@cloudarch.io",
+            "contact_phone": "+1-415-555-0899",
+            "skills": [
+                "AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Helm", "Docker",
+                "Prometheus", "Grafana", "Datadog", "Go", "Python", "Bash",
+                "GitOps", "DevSecOps", "SRE", "Agile Leadership"
+            ],
+            "seniority_level": "Lead/Principal",
+            "total_years_experience": 10.0
+        }
+    },
+    {
+        "id": "th_02_gov",
+        "markdown": """# ดร. ธีรพัฒน์ วงศ์สวัสดิ์
+**อีเมล:** teerapat.w@nectec.or.th
+**โทรศัพท์:** 02-564-6900 ต่อ 2341
+**ที่อยู่:** ปทุมธานี, ประเทศไทย
+
+## ประวัติโดยย่อ
+นักวิทยาศาสตร์ข้อมูลอาวุโสและหัวหน้าโครงการวิจัย มีความเชี่ยวชาญด้าน Large Language Model สำหรับภาษาไทย, การประมวลผลสัญญาณเสียง และระบบปัญญาประดิษฐ์เพื่อการแพทย์
+
+## ความเชี่ยวชาญและทักษะ
+- การสร้างและปรับแต่งโมเดล: PyTorch, Hugging Face Transformers, DeepSpeed, LoRA, QLoRA
+- ภาษาโปรแกรม: Python, C++, SQL, R
+- การประมวลผลภาษาธรรมชาติ (NLP): Thai Word Segmentation, Named Entity Recognition, Machine Translation
+- การบริหารจัดการ: การบริหารโครงการวิจัย (Project Management), การให้คำปรึกษาภาครัฐ
+
+## ประวัติการทำงาน
+
+### นักวิทยาศาสตร์ข้อมูลอาวุโส — ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC)
+*พฤศจิกายน 2562 – ปัจจุบัน*
+- หัวหน้าโครงการพัฒนา Thai LLM Foundation Model สำหรับบริการภาครัฐ
+- ออกแบบ Data Pipeline สำหรับคัดกรองชุดข้อมูลภาษาไทยขนาด 100 พันล้านคำ
+- ควบคุมทีมวิจัยจำนวน 8 ท่าน และจัดทำรายงานเสนอต่อกระทรวงดิจิทัลเพื่อเศรษฐกิจและสังคม
+
+### นักวิจัยหลังปริญญาเอก (Postdoctoral Researcher) — สถาบันวิทยสิริเมธี (VISTEC)
+*พฤษภาคม 2560 – ตุลาคม 2562*
+- วิจัยโมเดล Deep Learning สำหรับการวิเคราะห์ภาพถ่ายทางการแพทย์ (Medical Imaging)
+- เผยแพร่ผลงานวิจัยในระดับนานาชาติ 6 บทความใน IEEE และ ACL
+
+## ประวัติการศึกษา
+- ปริญญาเอก (Ph.D.) วิศวกรรมคอมพิวเตอร์ — จุฬาลงกรณ์มหาวิทยาลัย (พ.ศ. 2560)
+- ปริญญาตรี (เกียรตินิยมอันดับหนึ่ง) วิศวกรรมคอมพิวเตอร์ — มหาวิทยาลัยเกษตรศาสตร์ (พ.ศ. 2555)
+""",
+        "ground_truth": {
+            "full_name": "ดร. ธีรพัฒน์ วงศ์สวัสดิ์",
+            "contact_email": "teerapat.w@nectec.or.th",
+            "contact_phone": "02-564-6900 ต่อ 2341",
+            "skills": [
+                "PyTorch", "Hugging Face Transformers", "DeepSpeed", "LoRA", "QLoRA",
+                "Python", "C++", "SQL", "R",
+                "NLP", "Thai Word Segmentation", "Named Entity Recognition", "Machine Translation",
+                "Project Management"
+            ],
+            "seniority_level": "Lead/Principal",
+            "total_years_experience": 8.0
+        }
     }
 ]
+

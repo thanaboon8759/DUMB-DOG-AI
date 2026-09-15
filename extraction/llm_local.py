@@ -34,35 +34,37 @@ OLLAMA_API_KEY = "ollama"  # Ollama ignores the key but the client requires one
 
 DEFAULT_MODELS: list[str] = [
     "qwen2.5:7b",
+    "deepseek-r1:8b",
+    "scb10x/typhoon2:8b",
+    "gemma2:9b",
     "llama3.1:8b",
     "mistral:7b",
 ]
 
 _SYSTEM_PROMPT = """\
-You are a highly accurate resume information extractor.
+You are an expert AI talent intelligence agent and resume parsing system.
 
-Given the markdown text of a resume, extract **all** of the following fields and \
-return them as a single JSON object that conforms to the schema provided.
+Given the markdown text of a resume, extract all relevant fields and return them \
+as a single JSON object conforming strictly to the CandidateProfile schema.
 
 ### Extraction rules
 - **full_name**: The candidate's full name exactly as written.
-- **contact_email**: The primary email address, or null if not found.
-- **contact_phone**: The primary phone number (keep original formatting), or null.
-- **languages**: A list of human languages the candidate speaks (e.g. ["Thai", "English"]). \
-  Infer from a "Languages" section if present; do NOT include programming languages here.
-- **skills**: A flat list of technical and soft skills. Include programming languages, \
-  frameworks, tools, methodologies, and soft skills mentioned anywhere in the resume.
-- **experience**: A list of work-experience entries ordered **most recent first**. \
-  For each entry extract company, role, start_date, end_date (use "Present" if current), \
-  and a list of achievement bullet points.
-- **education**: A list of education entries. For each extract institution, degree, \
-  field_of_study, and graduation_year.
+- **contact_email**: The primary email address, or null if missing.
+- **contact_phone**: The primary phone number, or null if missing.
+- **languages**: Human spoken/written languages (e.g. ["Thai", "English"]).
+- **skills**: Explicitly stated technical and soft skills (languages, frameworks, tools, databases).
+- **implicit_skills**: Skills clearly demonstrated in project achievements but not explicitly listed in skills section (e.g. "managed sprint planning" -> "Agile Methodology", "reduced query time by 50%" -> "Database Optimization").
+- **seniority_level**: Estimate candidate seniority level: "Junior" (<2 yrs), "Mid-Level" (2-5 yrs), "Senior" (5-8 yrs), "Lead/Principal" (8+ yrs or team lead), or "Executive".
+- **total_years_experience**: Floating-point calculation of total professional years based on work dates.
+- **executive_summary**: High-impact 2-3 sentence executive profile summarizing the candidate's core expertise, domain experience, and key value proposition.
+- **extraction_confidence**: Self-assessed confidence score between 0.0 and 1.0 based on document clarity.
+- **experience**: List of work-experience entries ordered most recent first.
+- **education**: List of degrees, institutions, and graduation years.
 
 ### Important
-- If a field is missing or unclear, use null (for optional scalars) or an empty list.
-- Do NOT fabricate information that is not in the resume text.
-- Dates should be kept in whatever format they appear (e.g. "Jan 2020", "2020-01").
-- The resume may be in English, Thai, or a mix — handle both correctly.
+- Handle English, Thai, and bilingual Thai-English resumes seamlessly.
+- Preserve Thai Buddhist Era dates (e.g., 2564) and institution names accurately.
+- Return valid JSON adhering to the schema.
 """
 
 

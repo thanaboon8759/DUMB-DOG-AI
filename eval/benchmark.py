@@ -14,7 +14,13 @@ except ImportError:
     Console = None
     Table = None
 
-MODELS_TO_TEST = ['qwen2.5:7b', 'typhoon2:8b', 'llama3.1:8b', 'mistral:7b']
+MODELS_TO_TEST = [
+    'qwen2.5:7b',
+    'deepseek-r1:8b',
+    'scb10x/typhoon2:8b',
+    'gemma2:9b',
+    'llama3.1:8b',
+]
 
 def calculate_metrics(extracted_skills: List[str], ground_truth_skills: List[str]):
     extracted = set(s.lower().strip() for s in extracted_skills)
@@ -30,13 +36,27 @@ def calculate_metrics(extracted_skills: List[str], ground_truth_skills: List[str
 
 def run_benchmark(mock: bool = False):
     if not mock and not check_ollama_connectivity():
-        print("❌ Ollama server is not reachable at http://localhost:11434.")
-        print("💡 Tip: Start Ollama with 'ollama serve', or run with '--mock' to test the benchmark suite offline.")
+        print("[FAIL] Ollama server is not reachable at http://localhost:11434.")
+        print("[INFO] Start Ollama with 'ollama serve', or run with '--mock' to test the benchmark suite offline.")
         sys.exit(1)
 
+    import urllib.request
+    models_to_run = list(MODELS_TO_TEST)
+    if not mock:
+        try:
+            resp = urllib.request.urlopen("http://localhost:11434/api/tags", timeout=3)
+            installed = [m["name"].split(":")[0] + ":" + m["name"].split(":")[1] for m in json.loads(resp.read().decode()).get("models", [])]
+            # Filter to installed models that are text-capable
+            models_to_run = [m for m in MODELS_TO_TEST if any(m in inst for inst in installed) and "ocr" not in m]
+            if not models_to_run:
+                models_to_run = [m for m in installed if "ocr" not in m]
+        except Exception as e:
+            logger.warning(f"Could not fetch installed models: {e}")
+
+    print(f"[INFO] Running benchmark on models: {models_to_run} (mock={mock})")
     results = []
 
-    for model in MODELS_TO_TEST:
+    for model in models_to_run:
         print(f"Benchmarking model: {model}...")
         valid_count = 0
         total_latency = 0.0
@@ -53,18 +73,19 @@ def run_benchmark(mock: bool = False):
             skills = []
             
             if mock:
-                # Simulate realistic model extraction with minor model-dependent variance
-                import random
-                time.sleep(0.05)  # Simulate latency
-                # Simulate realistic skills recall
+                # Simulate model characteristics on RTX 4080 (16GB VRAM)
+                time.sleep(0.04)
                 if "qwen" in model:
-                    skills = list(gt_skills)  # near-perfect
+                    skills = list(gt_skills)
+                elif "deepseek" in model:
+                    skills = list(gt_skills)
                 elif "typhoon" in model:
-                    skills = [s for s in gt_skills if not s.startswith("SQL")]
-                elif "llama" in model:
-                    skills = gt_skills[:max(1, len(gt_skills) - 1)]
+                    # High recall on Thai, slightly lower on obscure cloud tools
+                    skills = [s for s in gt_skills if not s.startswith("Datadog")]
+                elif "gemma" in model:
+                    skills = [s for s in gt_skills if not s.startswith("Helm")]
                 else:
-                    skills = gt_skills[:max(1, len(gt_skills) - 2)]
+                    skills = gt_skills[:max(1, len(gt_skills) - 1)]
                 is_valid = True
             else:
                 try:
