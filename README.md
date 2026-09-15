@@ -326,6 +326,8 @@ Comprehensive verification was executed using `eval_speed_accuracy.py` across ve
 | Baseline (`scb10x/typhoon-ocr-3b`) | 7.73 s | 16.27% | 22.21% | 0.95 | BASELINE |
 | Fine-Tuned + Autocrop (`typhoon-ocr-finetuned`) | 7.64 s | 16.06% | 19.93% | 0.95 | PASS (Skill F1 >= 0.95) |
 
+![Benchmark Charts](benchmark_results/benchmark_charts.svg)
+
 ### Key Benchmark Observations
 - Vector Fast-Path achieves an average latency of 4.44 ms, exceeding the < 10 ms design target by more than 2x.
 - Fine-Tuned Typhoon OCR with whitespace autocropping reduces Word Error Rate (WER) from 22.21% to 19.93%.

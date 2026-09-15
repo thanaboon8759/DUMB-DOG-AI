@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" width="100%" height="100%" style="background:#0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="gradOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title & Header -->
+  <text x="450" y="40" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="bold" letter-spacing="1">DUMB-DOG-AI BENCHMARK CHARTS</text>
+  <text x="450" y="65" text-anchor="middle" fill="#94a3b8" font-size="12">Hardware: NVIDIA GeForce RTX 4080 (16GB VRAM) | Zero Cloud APIs</text>
+  
+  <!-- Section 1: Latency Comparison -->
+  <g transform="translate(50, 100)">
+    <rect width="800" height="140" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="28" fill="#f8fafc" font-size="14" font-weight="bold">GRAPH 1: EXTRACTION LATENCY BY ENGINE (LOWER IS FASTER)</text>
+    
+    <!-- Bar 1 -->
+    <text x="20" y="60" fill="#cbd5e1" font-size="11">PyMuPDF Vector Fast-Path (Clean PDF)</text>
+    <rect x="300" y="48" width="8" height="16" rx="4" fill="url(#gradGreen)"/>
+    <text x="320" y="61" fill="#34d399" font-size="11" font-weight="bold">4.44 ms (0.0044s) [Target &lt; 10ms: PASS]</text>
+
+    <!-- Bar 2 -->
+    <text x="20" y="88" fill="#cbd5e1" font-size="11">PaddleOCR (Traditional Vision Engine)</text>
+    <rect x="300" y="76" width="145" height="16" rx="4" fill="url(#gradOrange)"/>
+    <text x="455" y="89" fill="#fbbf24" font-size="11" font-weight="bold">2.78 s</text>
+
+    <!-- Bar 3 -->
+    <text x="20" y="116" fill="#cbd5e1" font-size="11">Typhoon OCR Fine-Tuned (typhoon-ocr-finetuned)</text>
+    <rect x="300" y="104" width="380" height="16" rx="4" fill="url(#gradPurple)"/>
+    <text x="690" y="117" fill="#818cf8" font-size="11" font-weight="bold">7.64 s</text>
+  </g>
+
+  <!-- Section 2: Thai Error Rate Reduction -->
+  <g transform="translate(50, 265)">
+    <rect width="385" height="180" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="28" fill="#f8fafc" font-size="13" font-weight="bold">GRAPH 2A: THAI WORD ERROR RATE (WER)</text>
+    <text x="20" y="45" fill="#94a3b8" font-size="10">PyThaiNLP word segmentation</text>
+
+    <!-- Baseline -->
+    <text x="20" y="80" fill="#cbd5e1" font-size="11">Baseline (Raw 200 DPI)</text>
+    <rect x="20" y="90" width="280" height="20" rx="4" fill="#f43f5e" opacity="0.85"/>
+    <text x="310" y="105" fill="#f43f5e" font-size="11" font-weight="bold">22.21%</text>
+
+    <!-- Fine-Tuned -->
+    <text x="20" y="135" fill="#cbd5e1" font-size="11">Fine-Tuned + Autocrop</text>
+    <rect x="20" y="145" width="251" height="20" rx="4" fill="url(#gradGreen)"/>
+    <text x="280" y="160" fill="#34d399" font-size="11" font-weight="bold">19.93% (-10.3%)</text>
+  </g>
+
+  <!-- Section 3: Single Column CER -->
+  <g transform="translate(465, 265)">
+    <rect width="385" height="180" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="28" fill="#f8fafc" font-size="13" font-weight="bold">GRAPH 2B: THAI CHAR ERROR RATE (CER)</text>
+    <text x="20" y="45" fill="#94a3b8" font-size="10">Single-column vs multi-column average</text>
+
+    <!-- Single Column -->
+    <text x="20" y="80" fill="#cbd5e1" font-size="11">Single-Column Thai (resume_0046)</text>
+    <rect x="20" y="90" width="45" height="20" rx="4" fill="url(#gradGreen)"/>
+    <text x="75" y="105" fill="#34d399" font-size="11" font-weight="bold">1.16% [Target &lt; 1.5%: PASS]</text>
+
+    <!-- Multi-Column Avg -->
+    <text x="20" y="135" fill="#cbd5e1" font-size="11">Multi-Column Synthetic Average</text>
+    <rect x="20" y="145" width="210" height="20" rx="4" fill="url(#gradBlue)"/>
+    <text x="240" y="160" fill="#60a5fa" font-size="11" font-weight="bold">16.06%</text>
+  </g>
+
+  <!-- Section 4: ExtractBench LLM Model F1 Scores -->
+  <g transform="translate(50, 470)">
+    <rect width="800" height="130" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="20" y="25" fill="#f8fafc" font-size="13" font-weight="bold">GRAPH 3: EXTRACTBENCH LOCAL LLM SKILL EXTRACTION F1 SCORE</text>
+    
+    <g transform="translate(20, 40)">
+      <!-- Qwen 2.5:7b -->
+      <text x="0" y="15" fill="#cbd5e1" font-size="10">qwen2.5:7b</text>
+      <rect x="110" y="4" width="500" height="14" rx="3" fill="url(#gradGreen)"/>
+      <text x="620" y="15" fill="#34d399" font-size="10" font-weight="bold">1.000 F1 (100% Schema Valid)</text>
+
+      <!-- Typhoon 2:8b -->
+      <text x="0" y="35" fill="#cbd5e1" font-size="10">typhoon2:8b</text>
+      <rect x="110" y="24" width="474" height="14" rx="3" fill="url(#gradPurple)"/>
+      <text x="595" y="35" fill="#818cf8" font-size="10" font-weight="bold">0.949 F1 (100% Schema Valid)</text>
+
+      <!-- LLaMA 3.1:8b -->
+      <text x="0" y="55" fill="#cbd5e1" font-size="10">llama3.1:8b</text>
+      <rect x="110" y="44" width="463" height="14" rx="3" fill="url(#gradBlue)"/>
+      <text x="585" y="55" fill="#60a5fa" font-size="10" font-weight="bold">0.926 F1 (100% Schema Valid)</text>
+
+      <!-- Mistral:7b -->
+      <text x="0" y="75" fill="#cbd5e1" font-size="10">mistral:7b</text>
+      <rect x="110" y="64" width="420" height="14" rx="3" fill="#64748b"/>
+      <text x="540" y="75" fill="#94a3b8" font-size="10" font-weight="bold">0.841 F1 (100% Schema Valid)</text>
+    </g>
+  </g>
+</svg>
